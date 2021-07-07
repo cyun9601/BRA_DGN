@@ -1,0 +1,35 @@
+work_dir: ./work_dir/CMU/asfamc_21joints/bra_dgn/test
+model_saved_name: ./runs/CMU/asfamc_21joints/bra_dgn/test
+
+# feeder
+feeder: feeders.feeder.Feeder
+test_feeder_args:
+  missing_joint_path: ./data/CMU/asfamc_21joints/val_missing_joint.pkl
+  full_joint_path: ./data/CMU/asfamc_21joints/val_full_joint.pkl
+  debug: False
+
+# model
+model: model.bra_dgn.Model
+model_args:
+  num_point: 21
+  num_person: 1
+  graph: graph.asfamc_21joints_directed_graph.Graph
+bone: True
+
+# optim
+paris: 'CMU/asfamc_21joints'
+loss_args:
+  position_loss: 1.0
+  bone_loss: 0.0001
+  smooth_loss: 0.0001
+  # attention_loss: 0.1
+
+# test
+phase: test
+test_dir: ./test/CMU/asfamc_21joints/bra_dgn/0.2percent_3.0noise
+device: [5]
+test_batch_size: 30000
+# NOTE: default tests the newest weight
+# Change filename if using different batch sizes
+weights: ./runs/CMU/asfamc_21joints/best_params/bra_dgn_third-100-296200.pt
+save_loss: True

@@ -1,0 +1,41 @@
+work_dir: ./work_dir/CMU/asfamc_21joints/bra_dgn_first
+model_saved_name: ./runs/CMU/asfamc_21joints/bra_dgn_first/bra_dgn_first
+
+# feeder
+feeder: feeders.feeder.Feeder
+train_feeder_args:
+  missing_joint_path: ./data/CMU/asfamc_21joints/train_missing_joint.pkl
+  full_joint_path: ./data/CMU/asfamc_21joints/train_full_joint.pkl  
+  debug: False
+
+test_feeder_args:
+  missing_joint_path: ./data/CMU/asfamc_21joints/val_missing_joint.pkl
+  full_joint_path: ./data/CMU/asfamc_21joints/val_full_joint.pkl
+
+# model
+model: model.bra_dgn.Model
+model_args:
+  num_point: 21 # 전처리된 데이터의 Joint 수
+  num_person: 1
+  graph: graph.asfamc_21joints_directed_graph.Graph
+bone: True
+
+# optim
+optimizer: Adam
+weight_decay: 0.0000
+base_lr: 0.0001
+step: [10, 200]
+paris: 'CMU/asfamc_21joints'
+loss_args:
+  position_loss: 1.0
+  bone_loss: 0.0001
+  smooth_loss: 0.0000
+  # attention_loss: 0.1
+
+# training
+device: [5]
+batch_size: 16
+test_batch_size: 16
+num_epoch: 200
+nesterov: True
+freeze_graph_until: 50 # Number of epochs until graphs can be updated
