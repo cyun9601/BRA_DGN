@@ -54,8 +54,9 @@ python3 main.py --config './config/asfamc_21joints/bra_dgn/train_bra_dgn_third.y
 
 # Test
 
+```
 python3 main.py --config './config/asfamc_21joints/bra_dgn/test_bra_dgn.yaml'
-
+```
 
 # Visualization 
 
