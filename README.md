@@ -16,16 +16,16 @@
 
 # Directory Structure
 
-- config/: Configuration of input variables for main.py. 
-- data/CMU/asfamc_21joints/: Put the data files, train_full_joint.pkl and train_missing_joint.pkl, in this path.
-- model/bra_dgn.py: Proposed model.
+- ``config/``: Configuration of input variables for main.py. 
+- ``data/CMU/asfamc_21joints/``: Put the data files, train_full_joint.pkl and train_missing_joint.pkl, in this path.
+- ``model/bra_dgn.py``: Proposed model.
 
 
 # Data Description
 
 ## CMU Mocap dataset
 
-- We use the CMU Motion Capture Database with 31 markers attached to actors, captured with an optical motion capture system. This data is converted from the joint angle representation in the original dataset to the 3D joint position and sub-sampled to 60 frames per second, and separated into overlapping windows of 64 frames (overlapped by 32 frames). Only 21 of the most important joints are preserved; the dimension of datasets can be represented with N×C×T×V shape where N is the number of data, C(3) is x, y, z channel, T(64) is time sequence, and V(21) is the number of joints. The proposed model in this paper is also applicable to data from various frames, rather than 64 frames.
+- We use the ``CMU Motion Capture Database`` with 31 markers attached to actors, captured with an optical motion capture system. This data is converted from the joint angle representation in the original dataset to the 3D joint position and sub-sampled to 60 frames per second, and separated into overlapping windows of 64 frames (overlapped by 32 frames). Only 21 of the most important joints are preserved; the dimension of datasets can be represented with N×C×T×V shape where N is the number of data, C(3) is x, y, z channel, T(64) is time sequence, and V(21) is the number of joints. The proposed model in this paper is also applicable to data from various frames, rather than 64 frames.
 
 ## Normalize
 
