@@ -36,11 +36,12 @@ We normalize the joint lengths. Human data can vary in the location and directio
 
 - The model is trained in a total of three stages via changing the coefficients.
 
-python3 main.py --config './config/asfamc_21joints/bra_dgn/train_bra_dgn_first.yaml' --base-lr 0.001 --device 0
 
-python3 main.py --config './config/asfamc_21joints/bra_dgn/train_bra_dgn_second.yaml' --base-lr 0.0001 --device 0
+  python3 main.py --config './config/asfamc_21joints/bra_dgn/train_bra_dgn_first.yaml' --base-lr 0.001 --device 0
 
-python3 main.py --config './config/asfamc_21joints/bra_dgn/train_bra_dgn_third.yaml' --base-lr 0.0001 --device 0
+  python3 main.py --config './config/asfamc_21joints/bra_dgn/train_bra_dgn_second.yaml' --base-lr 0.0001 --device 0
+
+  python3 main.py --config './config/asfamc_21joints/bra_dgn/train_bra_dgn_third.yaml' --base-lr 0.0001 --device 0
 
 # Test
 
