@@ -6,9 +6,9 @@
 
 - Inspired by a directed neural network, we present a model to fill and denoise the markers using the information of relevant joints by representing the skeleton data as a directed acyclic graph. It can directly exploit the spatial information, which was included only in constraint indirectly in the previous works, by creating bone data from joint data and the temporal information from the LSTM layer. Also, it can learn the dependency between joints from the data via adaptive graphs by putting joint and bone data into the network. As a result, the model showed good refinement performance for unseen data with a different type of noise level and missing data in the learning process. 
 
-- We are writing a paper on the content of the proposed model (BRA DGN) in this paper.
-
 <p align="center"><img src="https://user-images.githubusercontent.com/45411281/124753559-14958900-df64-11eb-9f2e-c1ee5e2ce7c8.png" width="70%"></p>
+
+- We are writing a paper on the content of the proposed model (BRA DGN) in this paper.
 
 # Environment
 
