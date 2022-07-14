@@ -5,15 +5,15 @@
 
 
 ### Introduction 
-- 3D skeleton motion data are widely used in several applications such as human-computer interactions, virtual reality, robotics, movie production, and action recognition. However, the 3D skeleton data captured by motion capture devices are often noisy and incomplete because of calibration error, sensor noise, poor sensor resolution, and occlusion due to body parts of clothing. For effective data utilization, data refinement should be performed before use. The purpose of this paper is to generate clean data using corrupted data with occlusion or noise. 
+- Three-dimensional (3D) skeleton motion data are widely used in several applications, such as human-computer interactions, virtual reality, robotics, movie production, and action recognition. The 3D skeleton data captured by motion capture devices are often noisy and incomplete because of calibration error, sensor noise, poor sensor resolution, and occlusion due to clothing on body parts. For effective data usage, data refinement should be performed beforehand. The purpose of this model is to generate clean data from corrupted data with occlusion or noise. 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/45411281/124753527-0ba4b780-df64-11eb-99c1-f26d28dd0987.png" width="80%" align="center"></p>
 
-- Inspired by a directed neural network, we present a model to fill and denoise the markers using the information of relevant joints by representing the skeleton data as a directed acyclic graph. It can directly exploit the spatial information, which was included only in constraint indirectly in the previous works, by creating bone data from joint data and the temporal information from the LSTM layer. Also, it can learn the dependency between joints from the data via adaptive graphs by putting joint and bone data into the network. As a result, the model showed good refinement performance for unseen data with a different type of noise level and missing data in the learning process. 
+- Inspired by a directed neural network, we propose a novel model that fills and denoises skeleton motion data using the information on relevant joints by representing the skeleton data as a directed acyclic graph. This model can directly exploit spatial information by creating bone data from joint data and temporal information from the long short-term memory layer. In addition, the proposed model can learn the connectivity between joints via an adaptive graphs. As a result, the proposed model showed good refinement performance for unseen data with a different type of noise level and missing data in the learning process. 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/45411281/124753559-14958900-df64-11eb-9f2e-c1ee5e2ce7c8.png" width="70%"></p>
 
-- We are writing a paper on the content of the proposed model (BRA DGN) in this paper.
+- We are writing a paper on the content of the proposed model in this paper.
 
 ### Contributions
 - The major contributions of this study are as follows.
@@ -41,13 +41,13 @@
 
 ### CMU Mocap dataset
 
-- We use the <a href='http://mocap.cs.cmu.edu/'>CMU Motion Capture Database</a> with 31 markers attached to actors, captured with an optical motion capture system. This data is converted from the joint angle representation in the original dataset to the 3D joint position and sub-sampled to 60 frames per second, and separated into overlapping windows of 64 frames (overlapped by 32 frames). Only 21 of the most important joints are preserved; the dimension of datasets can be represented with N×C×T×V shape where N is the number of data, C(3) is x, y, z channel, T(64) is time sequence, and V(21) is the number of joints. The proposed model in this paper is also applicable to data from various frames, rather than 64 frames.
+- We use the <a href='http://mocap.cs.cmu.edu/'>CMU Motion Capture Database</a>. With 31 markers attached to actors, the motion data were captured with an optical motion capture system. These data were converted from the joint angle representation in the original dataset to the 3D joint position, subsampled to 60 frames per second, and separated into overlapping windows of 64 frames (overlapped by 32 frames). Only 21 of the most relevant joints were preserved. The proposed model applies to not only data from 64 frames but also data from other various frames.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/45411281/124753582-1bbc9700-df64-11eb-9dd0-ccef3298517d.png" width="50%"></p>
 
 ### Normalize
 
-We normalize the joint lengths. Human data can vary in the location and direction of skeleton data each time they are captured. Similar to previous works, the global translation is removed by subtracting the position of the root joint from the original data, and the global rotation around the Y-axis is removed. Finally, we subtracted the mean pose from the original data and divided the absolute maximum value in each coordinate direction to normalize the data into [-1, 1]. This preprocessing process helps a particular joint to exist in stochastically similar locations, making it easier for the model to predict. 
+- Notably, the location and direction of skeleton motion data in the human motion data can change with the time they are captured. Similar to previous studies, not only the global translation is removed by subtracting the root joint position from the original data but also the global rotation around the Y-axis is removed. Finally, we subtracted the mean pose from the original data and divided the absolute maximum value in each coordinate direction to normalize the data into [−1, 1]. This preprocessing process helps a particular joint to exist in stochastically similar locations, making it easier for the model to predict.
 
 ## Train
 
